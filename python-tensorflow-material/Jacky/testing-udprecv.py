@@ -6,6 +6,7 @@ import base64
 import numpy as np
 import matplotlib.pyplot as plt
 from pylab import *
+from mpl_toolkits.mplot3d import Axes3D
 import sys
 
 global streamNr
@@ -262,7 +263,7 @@ while 1:
     # testData = base64.b64decode(data)
     # print("消息为：", testData, "地址为", addr)
     printData = read_from_stream(data);
-    print(printData)
+    # print(printData)
 
 
 
@@ -273,7 +274,34 @@ while 1:
     # ylabel('SNR [dB]');
 
     print("*************************************")
-    print(printData[csi_len])
+    # print(printData['csi'][0])
+
+    # for i in range(len(printData['csi'])):
+    #     print("#####################################")
+    #     print(printData['csi'][i])
+    #     for t in printData['csi'][i]:
+    #         ax1 = subplot( 1, 1, 1)
+    #         subplot()
+    #         plt.plot(t)
+    #         plt.show()
+
+    # print(len(printData['csi'][0][0]))
+    # for i in range(len(printData['csi'][0][0])):
+    x = arange(0,114,1)
+    plt.scatter(printData['csi'][0][0],x)
+    plt.scatter(printData['csi'][0][1],x)
+    plt.scatter(printData['csi'][1][0],x)
+    plt.scatter(printData['csi'][1][1],x)
+    plt.show()
+
+
+    # ax = plt.subplot(111, projection='3d')  # 创建一个三维的绘图工程
+    # ax.scatter(printData['csi'][0], c='r')
+    # plt.scatter(ax, marker='o')
+    # ax.set_zlabel('rs12612420')  # 坐标轴
+    # ax.set_ylabel(u'周运动')
+    # ax.set_xlabel(u'运动热爱')
+    # plt.show()
     print("*************************************")
 
 
